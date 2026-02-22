@@ -1,5 +1,16 @@
 # Personal AI on OpenClaw: Master Task List
 
+## Progress Snapshot (2026-02-22)
+
+- `WS1` Baseline and observability: `in progress` (plugin scaffold + metrics foundation done)
+- `WS2` Token optimization: `in progress` (routing/budget hooks foundation done; regression suite pending)
+- `WS3` Preference memory: `in progress` (file store + extraction basics done; retrieval integration tuning pending)
+- `WS4` Task planner: `in progress` (file store + core tools done; NL extraction and prompt integration refinement pending)
+- `WS5` Daily summary: `in progress` (manual tools + auto service timer integration done; direct cron-job path + LINE delivery pending)
+- `WS6` Skill registry/versioning: `in progress` (file registry + lifecycle rules done; command/admin controls pending)
+- `WS7` LINE integration hardening: `pending`
+- `WS8` Full test platform: `in progress` (unit + plugin hook/service integration foundation done; e2e/regression/load pending)
+
 ## Assumptions
 
 - OpenClaw core remains primary runtime

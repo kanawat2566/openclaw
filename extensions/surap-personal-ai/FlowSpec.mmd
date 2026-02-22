@@ -1,0 +1,56 @@
+flowchart TD
+  subgraph U["User Channels"]
+    U1["LINE (ตอนนี้ target หลัก)"]
+    U2["ช่องทางอื่นผ่าน OpenClaw (อนาคต)"]
+  end
+
+  subgraph O["OpenClaw Core (มีอยู่แล้ว)"]
+    O1["Channel/Webhook Runtime"]
+    O2["Auto-Reply Dispatcher"]
+    O3["Agent Runtime + Tool System"]
+    O4["Plugin Hook System"]
+    O5["Cron Service (scheduler engine)"]
+  end
+
+  subgraph P["surap-personal-ai (Feature ใหม่ของเรา)"]
+    P0["Plugin + Service Bootstrap"]
+    P1["Token Optimization"]
+    P2["Hybrid Model Routing (small/large config-ready)"]
+    P3["Preference Memory (file-first)"]
+    P4["Task Planner (file-first)"]
+    P5["Daily Summary (manual now, cron-ready)"]
+    P6["Skill Registry / Versioning (file-first)"]
+    P7["Metrics / Progress Tracking"]
+  end
+
+  subgraph S["OpenClaw State Dir /plugins/surap-personal-ai"]
+    S1["preferences.json"]
+    S2["tasks.json"]
+    S3["daily-summaries.json"]
+    S4["skills.json"]
+    S5["metrics.jsonl"]
+  end
+
+  U1 --> O1
+  U2 --> O1
+  O1 --> O2
+  O2 --> O4
+
+  O4 --> P1
+  O4 --> P2
+  O4 --> P3
+  O4 --> P7
+
+  P1 -->|"before_prompt_build"| O3
+  P2 -->|"before_model_resolve"| O3
+  P3 -->|"message_received extract preference"| S1
+  P4 -->|"tools: create/update/list/plan"| S2
+  P5 -->|"tools: generate/list summary"| S3
+  P6 -->|"seed + lifecycle state"| S4
+  P7 -->|"hooks/tool usage/llm/compaction logs"| S5
+
+  O3 -->|"surap_preference_memory_*"| P3
+  O3 -->|"surap_task_*"| P4
+  O3 -->|"surap_daily_summary_*"| P5
+
+  O5 -. "phase ถัดไป: trigger auto daily summary" .-> P5

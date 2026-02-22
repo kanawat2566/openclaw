@@ -1,4 +1,5 @@
 import type { MetricsWriter } from "./metrics.js";
+import type { DailySummaryStore } from "./daily-summary-store.js";
 import type { PreferenceStore } from "./preference-store.js";
 import type { SkillRegistryStore } from "./skill-registry.js";
 import type { TaskStore } from "./task-store.js";
@@ -10,6 +11,7 @@ export type PersonalAiRuntimeState = {
     preferences: PreferenceStore;
     tasks: TaskStore;
     skills: SkillRegistryStore;
+    dailySummaries: DailySummaryStore;
   };
   metrics: MetricsWriter;
 };

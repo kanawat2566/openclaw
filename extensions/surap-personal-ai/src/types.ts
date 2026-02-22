@@ -13,6 +13,12 @@ export type SurapPersonalAiConfig = {
     complexityThreshold?: number;
     forceLargeKeywords?: string[];
   };
+  dailySummary?: {
+    auto?: {
+      enabled?: boolean;
+      intervalMs?: number;
+    };
+  };
 };
 
 export type TokenBudgetPolicy = {

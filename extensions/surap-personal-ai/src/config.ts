@@ -44,3 +44,14 @@ export function resolveRoutingModels(cfg: SurapPersonalAiConfig): RoutingModels 
     ]).map((s) => s.toLowerCase()),
   };
 }
+
+export function resolveDailySummaryAutoConfig(cfg: SurapPersonalAiConfig): {
+  enabled: boolean;
+  intervalMs: number;
+} {
+  const auto = cfg.dailySummary?.auto;
+  return {
+    enabled: auto?.enabled === true,
+    intervalMs: Math.max(60_000, auto?.intervalMs ?? 6 * 60 * 60 * 1000),
+  };
+}

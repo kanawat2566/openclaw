@@ -12,8 +12,8 @@ const PREFERENCE_PATTERNS: Array<{
   importance?: number;
 }> = [
   { pattern: /\bI prefer\s+(.+)/i, key: "preference.general", importance: 0.8 },
-  { pattern: /\bผมชอบ\s+(.+)/i, key: "preference.general", importance: 0.8 },
-  { pattern: /\bผมไม่ชอบ\s+(.+)/i, key: "preference.avoid", importance: 0.85 },
+  { pattern: /ผมชอบ\s*(.+)/i, key: "preference.general", importance: 0.8 },
+  { pattern: /ผมไม่ชอบ\s*(.+)/i, key: "preference.avoid", importance: 0.85 },
   { pattern: /\bตอบสั้น\b/i, key: "response.style", importance: 0.9 },
   { pattern: /\bไม่ต้องอธิบายยาว\b/i, key: "response.style", importance: 0.9 },
 ];
