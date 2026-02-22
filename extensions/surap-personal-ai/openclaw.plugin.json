@@ -1,0 +1,8 @@
+{
+  "id": "surap-personal-ai",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": true,
+    "properties": {}
+  }
+}
